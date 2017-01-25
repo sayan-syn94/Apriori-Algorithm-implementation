@@ -2,9 +2,9 @@ import sys
 import csv
 from collections import defaultdict
 from itertools import chain, combinations
-from time import time
+import time
 
-s=time()
+s=time.time()
 freqSet = defaultdict(int)
 def data_gen(fname):
         """Function which reads from the file and yields a generator"""
@@ -78,8 +78,7 @@ if __name__ == "__main__":
 
     minSupport =0.01
     minConfidence = 0.01
-    inFile=dataFromFile('T10I4D100k-copy.txt')
-    items, rules = runApriori(inFile, minSupport, minConfidence)
+    inFile=data_gen('T10I4D100k-copy.txt')
+    run_apriori(inFile, minSupport, minConfidence)
 
-    printResults(items, rules)
     print (s-time.time())
